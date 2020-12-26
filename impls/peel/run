@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# exec $(dirname $0)/${STEP:-stepA_mal} "${@}"
+# cd ./mal/src
+# cargo run --bin step0_repl
+echo "new"
+./mal/target/debug/step0_repl
