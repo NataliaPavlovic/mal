@@ -1,6 +1,8 @@
 mod reader;
 mod printer;
 mod types;
+mod eval;
+mod repl_env;
 
 use std::io::{self, Write};
 
@@ -8,13 +10,12 @@ fn read(input: &str) -> types::Node {
     reader::read_str(input)
 }
 
-fn eval(input: types::Node) -> types::Node {
-    input
+fn eval(ast: types::Node) -> types::Node {
+    eval::eval_ast(ast, repl_env::get_repl_env())
 }
 
-fn print(mut input: types::Node ) -> String {
+fn print(mut input: types::Node) -> String {
     let mut ret = String::from("");
-
     printer::print_preorder(&mut input, &mut ret, false);
     ret
 }
